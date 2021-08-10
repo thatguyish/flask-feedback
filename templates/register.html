@@ -1,0 +1,20 @@
+{%extends 'base.html'%}
+{%block title%}Register{%endblock%}
+{%block content%} 
+    <form action="/register" method="post">
+    {{form.hidden_tag()}}
+    {%for field in form%}
+    {%if field.widget.input_type != "hidden"%}
+    <p>
+        {{field.label}}
+        {{field}}
+        {%for error in field.errors%}
+        {{error}}
+        {%endfor%}
+        </p>
+    {%endif%}
+    {%endfor%}
+    <input type="submit">
+    </form>
+
+{%endblock%}
