@@ -1,10 +1,11 @@
 from forms import LoginForm, RegistrationForm, FeedBackForm
 from flask import Flask,redirect,render_template,session
 from models import Feedback, db,connect_db,User
+import os
 
 app = Flask(__name__)
 
-app.config['SECRET_KEY'] = "VerySecret"
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY',"secretisthis")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql:///feedback"
 
